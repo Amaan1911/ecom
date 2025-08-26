@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="bg-blue-500 shadow px-6 py-4 grid grid-cols-3 items-center">
-      {/* Logo */}
+      
       <div 
         onClick={() => navigate("/")} 
         className="text-xl font-bold cursor-pointer"
@@ -19,7 +19,7 @@ export default function Header() {
         Logo
       </div>
 
-      {/* Search Bar */}
+    
       <div className="flex justify-center">
         <input
           placeholder="Search for products..."
@@ -29,7 +29,7 @@ export default function Header() {
         />
       </div>
 
-      {/* Cart */}
+  
       <nav className="flex items-center justify-end gap-4">
         <Link to="/cart" className="relative">
           <button className="bg-blue-600 text-white px-4 py-2 rounded">
