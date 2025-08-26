@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow sm:rounded-lg">
       <div className="aspect-square overflow-hidden">
@@ -31,6 +34,7 @@ export default function ProductCard({ product }) {
         <div className="flex gap-2">
           <button
             className="flex-1 bg-blue-600 text-white py-2 px-3 sm:px-4 rounded-md hover:bg-blue-700 transition-colors font-medium text-sm sm:text-base"
+            onClick={() => addToCart(product, 1)}
           >
             Add to Cart
           </button>

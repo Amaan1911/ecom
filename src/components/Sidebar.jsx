@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FilterContext } from "../context/FilterContext";
 
 export default function Sidebar({ categories }) {
+  const { category, setCategory, priceRange, setPriceRange } = useContext(FilterContext);
+
   return (
     <aside className="space-y-6 bg-blue-500 shadow-md p-6 rounded-md w-[200px] md:w-auto">
     
@@ -12,7 +15,12 @@ export default function Sidebar({ categories }) {
               key={c}
               className="flex items-center gap-2 whitespace-nowrap bg-white/20 md:bg-transparent px-2 py-1 rounded md:rounded-none"
             >
-              <input type="radio" name="cat" />
+              <input 
+                type="radio" 
+                name="cat" 
+                checked={category === c}
+                onChange={() => setCategory(c)}
+              />
               <span>{c}</span>
             </label>
           ))}
@@ -22,8 +30,14 @@ export default function Sidebar({ categories }) {
      
       <div className="card">
         <h3 className="font-semibold mb-2">Price (max)</h3>
-        <input type="range" min="0" max="1000" defaultValue="500" />
-        <div className="text-sm mt-2">Up to $500</div>
+        <input 
+          type="range" 
+          min="0" 
+          max="1000" 
+          value={priceRange[1]} 
+          onChange={(e) => setPriceRange([0, Number(e.target.value)])}
+        />
+        <div className="text-sm mt-2">Up to ${priceRange[1]}</div>
       </div>
     </aside>
   );
